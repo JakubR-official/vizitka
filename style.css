@@ -1,0 +1,165 @@
+:root {
+    --bg-top: #e7d7bf;
+    --bg-bottom: #f8f3ea;
+    --card-paper: #fffdf8;
+    --card-ink: #232323;
+    --card-muted: #555555;
+    --accent-main: #1f4f6f;
+    --accent-soft: #d6e7f1;
+    --edge: #d9cdb8;
+    --shadow: rgba(34, 24, 9, 0.22);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Avenir Next", "Segoe UI", sans-serif;
+    color: var(--card-ink);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 42%),
+        radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 48%),
+        linear-gradient(145deg, var(--bg-top), var(--bg-bottom));
+}
+
+.page-wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 30px 14px;
+}
+
+.business-card {
+    width: min(100%, 880px);
+    aspect-ratio: 1.75 / 1;
+    background: var(--card-paper);
+    border: 1px solid var(--edge);
+    border-radius: 18px;
+    box-shadow:
+        0 26px 44px -20px var(--shadow),
+        0 5px 14px rgba(0, 0, 0, 0.09);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-accent {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 140px;
+    background:
+        linear-gradient(180deg, #2e5f7f 0%, var(--accent-main) 45%, #174460 100%);
+}
+
+.card-accent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            -35deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.11) 6px,
+            rgba(255, 255, 255, 0) 6px,
+            rgba(255, 255, 255, 0) 18px
+        );
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 190px 1fr 1px 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 26px 28px 26px 42px;
+}
+
+.photo-wrap {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    border: 4px solid var(--card-paper);
+    box-shadow: 0 7px 20px rgba(12, 26, 36, 0.25);
+    overflow: hidden;
+    justify-self: center;
+    background: var(--accent-soft);
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.person-block h1 {
+    margin: 0 0 6px;
+    font-size: clamp(1.2rem, 2.1vw, 1.8rem);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+}
+
+.person-block .role {
+    margin: 0 0 10px;
+    color: var(--accent-main);
+    font-weight: 600;
+}
+
+.person-block p {
+    margin: 0;
+    color: var(--card-muted);
+    font-size: 0.98rem;
+}
+
+.divider {
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(180deg, rgba(31, 79, 111, 0.14), rgba(31, 79, 111, 0.5), rgba(31, 79, 111, 0.14));
+    justify-self: center;
+}
+
+.details-grid {
+    display: grid;
+    gap: 8px;
+    align-content: center;
+}
+
+.details-grid p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2f2f2f;
+}
+
+@media (max-width: 900px) {
+    .business-card {
+        aspect-ratio: auto;
+        max-width: 520px;
+    }
+
+    .card-accent {
+        width: 100%;
+        height: 100px;
+        inset: 0 0 auto 0;
+    }
+
+    .card-content {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 24px 20px 20px;
+        margin-top: 68px;
+        text-align: center;
+    }
+
+    .divider {
+        width: 70%;
+        height: 1px;
+    }
+
+    .details-grid {
+        justify-items: center;
+    }
+}
